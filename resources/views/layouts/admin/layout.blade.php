@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" media="screen" href="{{asset('css/bootstrap_admin.min.css?v=1')}}" />
-    <link rel="stylesheet" media="screen" href="{{asset('css/admin_style.css?v=1')}}" />
+    <link rel="stylesheet" media="screen" href="{{asset('css/footer.css?v=1')}}" />
     <link rel="stylesheet" media="screen" href="{{asset('css/jquery-ui.css?v=1')}}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     @yield('css')

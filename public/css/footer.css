@@ -1,0 +1,186 @@
+/* 10.  Footer
+
+--------------------------------------------------------------------------------*/
+
+#footer{
+
+    border-top: 1px solid #d4d4d4;
+
+    padding: 26px 0 16px 0;
+
+    background-color: #000
+
+}
+
+#footer p {
+
+    margin-left:10px;
+
+}
+
+#footer .main-footer .grid_3{
+
+    margin-bottom: 36px;
+
+}
+
+#footer .title{
+
+    font-size: 1.077em;
+
+    text-transform: uppercase;
+
+    padding-bottom: 12px;
+
+}
+
+#footer .description{
+
+    padding-bottom: 10px;
+
+    line-height: 1.6em;
+
+
+
+}
+
+#footer .about-us .email{
+
+    padding: 0 0 5px 0;
+
+}
+
+#footer .lst-tweets > ul{
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+#footer .lst-tweets > ul li{
+
+    padding-top: 15px;
+
+}
+
+#footer .lst-tweets > ul li:first-child{
+
+    padding-top: 0 ;
+
+}
+
+#footer .lst-tweets > ul a{
+
+    color: #ea503d;
+
+}
+
+#footer .lst-tweets > ul a:hover{
+
+    border-bottom: 1px dotted #ea503d;
+
+}
+
+#footer .lst-tweets > ul .timestamp{
+
+    font-style: italic;
+
+    color: #adb2b5;
+
+}
+
+#footer .form-email .txt{
+
+    margin-bottom: 10px;
+
+}
+
+#footer .footer-menu > ul{
+
+    float: right;
+
+    width: 100px;
+
+}
+
+#footer .footer-menu > ul:first-child{
+
+    float: left;
+
+    width: 105px;
+
+}
+
+#footer .footer-menu > ul li{
+
+    padding: 2px 0;
+
+}
+
+#footer .footer-menu > ul li:first-child{
+
+    padding-top: 0;
+
+}
+
+#footer .copyright{
+
+    background: #222222;
+    text-align: center;
+    border-top : 1px solid #222222;
+    color:white;
+
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+
+}
+
+#footer .copyright > .container_12 > .grid_12{
+
+    position: relative;
+
+    padding: 23px 0;
+
+}
+
+#footer .logo-footer{
+
+    position: absolute;
+
+    top: 22px;
+
+    left: 0;
+
+}
+
+#footer .term-privacy{
+
+    position: absolute;
+
+    top: 22px;
+
+    right: 0;
+
+}
+
+#footer .term-privacy .sep{
+
+    color: #aeaeae;
+
+    margin: 3px;
+
+    font-family: 'Open Sans', sans-serif;
+
+    font-weight: 700;
+
+}
+
+
+
+

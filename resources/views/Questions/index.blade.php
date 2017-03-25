@@ -23,9 +23,7 @@
         </head>
         <body>
             <?php 
-            $page = $questions->lastPage();
-            $counter = ($questions->currentPage()-1) * $questions->perPage();
-            $total = count($questions);
+                $counter = ($questions->currentPage()-1) * $questions->perPage();
             ?>
             @foreach ($questions as $row)
                 <?php $counter++; ?>

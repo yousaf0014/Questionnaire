@@ -5,7 +5,7 @@
 <div>
     <div class="pull-left"><h3>Content Management</h3></div>
     <div class="pull-right" style="padding-top:20px">
-        <form id="searchCompanies" name="searchSs" class="pull-right" action="{{url('/Questionnaires')}}">
+        <form id="searchCompanies" name="searchSs" class="pull-right" action="{{url('/Questionnaire')}}">
             <input type="text" value="{{isset($keyword) ? $keyword : ''}}" name="keyword" class="form-control input-sm pull-left" style="width:150px; margin-right:5px" />
             <a href="javascript:{}" class="btn btn-primary btn-sm" onclick="$('#searchCompanies').submit();">Search</a>
             <a href="{{url('/Questionnaire/create/')}}" class="btn btn-success btn-sm">Add Questionnire</a>
@@ -24,10 +24,8 @@
             <th class="text-center" width="20%">Actions</th>
         </tr>
         
-        <?php 
-        $page = $questionnaires->lastPage();
+        <?php
         $counter = ($questionnaires->currentPage()-1) * $questionnaires->perPage();
-        $total = count($questionnaires);
         ?>
         @foreach ($questionnaires as $row)
             <?php $counter++; ?>
@@ -49,7 +47,7 @@
                 <td><a href="{{url('/Questionnaire/active/'.$row->id)}}/{{ $row->published == 0 ? 1:0}}" title="Edit Content" class="edit_info">{{ $row->published == 0 ? 'No':'Yes'}}</a></td>
                 <td class="text-center">
                     <a href="{{url('/Questionnaire/'.$row->id.'/')}}" title="View" class="btn btn-primary btn-sm mt5">
-                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; Edit</a> &nbsp;
+                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; View</a> &nbsp;
 
 
                     <a href="{{url('/Questionnaire/'.$row->id.'/edit')}}" title="Edit Content" class="btn btn-primary btn-sm mt5">
@@ -61,8 +59,8 @@
 
 
                     <a onclick="show_alert('{{$row->id}}')" href="javascript:;" title="Delete" class="btn btn-primary btn-sm mt5">
-                        <span class="glyphicon glyphicon-trash mr5"></span>Delete
-                    </a> &nbsp;
+                        <span class="glyphicon glyphicon-trash mr5"></span>&nbsp;Delete
+                    </a> 
 
                     
                     

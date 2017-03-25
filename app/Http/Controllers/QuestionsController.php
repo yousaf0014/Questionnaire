@@ -33,8 +33,8 @@ class QuestionsController extends Controller
     public function index(Request $request,Questionnaire $questionnaire){    
         $questionObj = new Question;
         $questionObj = $questionObj->where('questionnaire_id',$questionnaire->id);
-        if(isset($request->keyword)){
-            $keyword = $request->keyword;
+        if($request->get('keyword')){
+            $keyword = $request->get('keyword');
             $questionObj = $questionObj->Where('statement', 'like', '%'.$keyword.'%');
         }
         $questions = $questionObj->paginate(10);
@@ -100,9 +100,13 @@ class QuestionsController extends Controller
     }
 
     public function delete(Question $question){
-        $question->delete();
+        if(!empty($question->id)){
+            $question->delete();
+            flash('Question Successfully deleted!','success');
+        }else{
+            flash('Error in deleting. Please try again later','error');
+        }
         flash('Successfully deleted the Question!','success');
-        return back();
-    
+        return back();    
     }    
 }

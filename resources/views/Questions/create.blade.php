@@ -9,40 +9,42 @@
             <a class="pull-right btn btn-default btn-sm mt5" href="{{url('/Questionnaire')}}">
                 <span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Go Back
             </a>        
-            <a href="javascript:;" onclick="submitMe()" class="btn btn-default pull-right btn-sm mt5 mr10">Save</a>    
+            <a href="javascript:;" onclick="submitForm()" class="btn btn-default pull-right btn-sm mt5 mr10">Save</a>    
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            <ol class="breadcrumb">         
-                <li><a href="{{url('/questionnaires')}}">Questionnaires</a></li>
-                <li class="active">Add Questions ({{$questionnaire->name}})</li>
-            </ol>
-            {{ Html::ul($errors->all()) }}
-            {!! Form::open(array('url' => 'Questions/'.$questionnaire->id,'id'=>'add_question','name'=>'add_question','class'=>'form-horizontal')) !!}
-                <div id="questions_area">
-                    
-                </div>
+            <div class="col-lg-12">
+                <ol class="breadcrumb">         
+                    <li><a href="{{url('/questionnaires')}}">Questionnaires</a></li>
+                    <li class="active">Add Questions ({{$questionnaire->name}})</li>
+                </ol>
+                {{ Html::ul($errors->all()) }}
+                {!! Form::open(array('url' => 'Questions/'.$questionnaire->id,'id'=>'add_question','name'=>'add_question','class'=>'form-horizontal')) !!}
+                    <div id="questions_area">
+                        
+                    </div>
 
-                <div class="form-group">                    
-                    <label class="col-lg-2  control-label">
-                        <a href="javascript:;" class="btn btn-primary btn-sm mt5" onclick="addQuestion()">
-                            <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Question
-                        </a>
-                    </label>
-                </div>
-                <div class="form-group">                
-                    <div class="col-lg-offset-1 col-lg-1">
-                        <a class="pull-right btn btn-danger" href="{{url('/Questionnaire')}}">
-                        <span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Go Back</a>
+                    <div class="form-group">                    
+                        <label class="col-lg-2  control-label">
+                            <a href="javascript:;" class="btn btn-primary btn-sm mt5" onclick="addQuestion()">
+                                <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Question
+                            </a>
+                        </label>
                     </div>
-                    <div class="col-lg-1">
-                        <button type="button" onclick="submitForm()" class="btn btn-primary btn-sm">Save Questions</button>                                    
+                    <div class="form-group">                
+                        <div class="col-lg-offset-1 col-lg-1">
+                            <a class="pull-right btn btn-danger" href="{{url('/Questionnaire')}}">
+                            <span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Go Back</a>
+                        </div>
+                        <div class="col-lg-1">
+                            <button type="button" onclick="submitForm()" class="btn btn-primary btn-sm">Save Questions</button>                                    
+                        </div>
+                        <div class="col-lg-offset-1 col-lg-8">                        
+                            <label class="col-lg-4 error" id="error_message" style="display:none"></label>
+                        <div>
                     </div>
-                    <div class="col-lg-offset-1 col-lg-8">                        
-                        <label class="col-lg-4 error" id="error_message" style="display:none"></label>
-                    <div>
-                </div>
-            {!! Form::close() !!}
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
 

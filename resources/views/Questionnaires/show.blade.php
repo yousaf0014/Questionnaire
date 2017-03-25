@@ -40,10 +40,11 @@
                 </tr>
             </table>
 
+            @if(!empty($questions))
             <h2>List of question</h2>
 
             <table style="width:100%" class="table table-bordered table-striped table-hover" cellspacing="0" cellpadding="5">
-                @if(!empty($questions))
+                
                     @foreach($questions as $question)
                     <tr>
                         <td class="text-left"><strong>Q: {{$question->statement}} ({{$question->type}})</strong></td>                        
@@ -57,10 +58,9 @@
                             <ul>
                         </td>
                     </tr>
-                    @endforeach
-                @endif
+                    @endforeach                
             </table>
-
+            @endif
             <div class="clearfix"></div>
             <div class="form-group">                
                 <div class="col-lg-offset-1 col-lg-1">

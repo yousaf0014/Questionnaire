@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Questionnaire;
 use App\Question;
 use Auth;
-use DB;
 
 class QuestionnaireController extends Controller
 {
@@ -33,8 +32,8 @@ class QuestionnaireController extends Controller
     {    
         $questionnaireObj = new Questionnaire;
         $questionnaireObj = $questionnaireObj->Where('user_id',Auth::user()->id);
-        if(isset($request->keyword)){
-            $keyword = $request->keyword;
+        if($request->get('keyword')){
+            $keyword = $request->get('keyword');
             $questionnaireObj = $questionnaireObj->Where('name', 'like', '%'.$keyword.'%');
         }
 
@@ -60,21 +59,22 @@ class QuestionnaireController extends Controller
         if ($validator->fails()) {
             return Redirect::to('/Questionnaire/create')
                 ->withErrors($validator)->withInput();
-        } else {
-            $questionnaireObj = new Questionnaire;
-            $data = $request->all();
-            $data['user_id'] = Auth::user()->id;
-            $questionnaireObj->create($data);
-            flash('Successfully Saved.','success');
-            return redirect('/Questionnaire');
-        }
+        } 
+        
+        $questionnaireObj = new Questionnaire;
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        $questionnaireObj->create($data);
+        flash('Successfully Saved.','success');
+        return redirect('/Questionnaire');
+        
     }
 
     public function show(Questionnaire $questionnaire){
         $questionObj = new Question;
         $questionObj = $questionObj->with(array('questionAnswer'));
         $questions = $questionObj->where('questionnaire_id',$questionnaire->id)->get(); 
-        
+
         return View('Questionnaires.show',compact('questionnaire','questions'));   
     }
 
@@ -83,8 +83,6 @@ class QuestionnaireController extends Controller
     }
 
     public function update(Request $request,Questionnaire $questionnaire){
-    // validate
-        // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
             'resume'      => 'required'
@@ -99,8 +97,6 @@ class QuestionnaireController extends Controller
         //$questionnaireObj = new Questionnaire;
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
-
-        unset($data['_method']);unset($data['_token']); 
         $questionnaire->update($data);
 
         flash('Successfully updated Questionnaire!','success');
@@ -109,8 +105,12 @@ class QuestionnaireController extends Controller
     }
 
     public function delete(Questionnaire $questionnaire){
-        $questionnaire->delete();
-        flash('Successfully deleted the Questionnaire!','success');
+        if(!empty($questionnaire->id)){
+            $questionnaire->delete();
+            flash('Successfully deleted the Questionnaire!','success');
+        }else{
+            flash('Error in deleting. Please try again later','error');
+        }
         return redirect('/Questionnaire');
     }
 
@@ -118,6 +118,11 @@ class QuestionnaireController extends Controller
     public function active(Questionnaire $questionnaire , $action) {
         $questionnaire->published = $action;
         $questionnaire->save();
+        if($action){
+            flash('Questionnaire successfully published!','success');
+        }else{
+            flash('Questionnaire successfully unpublished!','success');
+        }
         return back();    
     }    
 }
